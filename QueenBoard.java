@@ -21,11 +21,18 @@ public class QueenBoard{
        if(board[r][c] == 1){
         ans += "Q ";
       }
-      ans += "_ ";
+      else{ans += "_ ";}
      }
      ans += '\n';
    }
    return ans;
+  }
+ public static void main(String[] args) {
+   QueenBoard test = new QueenBoard(8);
+    System.out.println(test.addQueen(3, 4));
+    System.out.println(test.toString());
+    System.out.println(test.removeQueen(3, 4));
+    System.out.println(test.toString());
   }
 
 }
