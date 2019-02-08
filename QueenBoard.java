@@ -32,6 +32,7 @@ public class QueenBoard{
    }
    return ans;
   }
+
  public static void main(String[] args) {
    QueenBoard test = new QueenBoard(8);
     System.out.println(test.addQueen(3, 4));
@@ -39,5 +40,18 @@ public class QueenBoard{
     System.out.println(test.removeQueen(3, 4));
     System.out.println(test.toString());
   }
+  public boolean check(){
+    for(int r = 0; r < board.length; r++){
+      for(int c =0; c < board[0].length; c++){
+        if(board[r])
+      }
+    }
+  }
+  public boolean solve(){
+    int numQueens = 0;
+    if(numQueens == board.length -1){
+      return true;
+    }
+    return false;
+  }
 
-}
