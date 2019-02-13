@@ -31,12 +31,25 @@ public class QueenBoard{
     }
     return true;
 }
-  private boolean removeQueen(int r, int c){
-    if(board[r][c] == 1){
-      board[r][c] = 0;
-      return true;
+  private void removeQueen(int r, int c){
+    board[r][c] = 0;
+    for(int row = 0; row < board.length; row++){
+      for(int col = c+1; col < board[0].length; col++){
+        if(row == r){
+          board[r][col]--;
+        }
+        if(col == r - row + c){
+          board[row][col]--;
+        }
+        if(col == row - r + c){
+          board[row][col]--;
+        }
+
+
+      }
+
     }
-    return false;
+
   }
   public String toString(){
     String ans = "";
@@ -79,7 +92,13 @@ public class QueenBoard{
   public static void main(String[] args) {
     QueenBoard test = new QueenBoard(4);
      System.out.println(test.addQueen(1, 1));
+
      System.out.println(test.toString());
+     System.out.println(test.addQueen(3, 0));
+     System.out.println(test.toString());
+     test.removeQueen(1, 1);
+     System.out.println(test.toString());
+
 
    }
 }
