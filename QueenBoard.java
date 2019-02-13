@@ -55,12 +55,11 @@ public class QueenBoard{
     String ans = "";
    for(int r = 0; r < board.length; r++){
      for(int c =0; c < board[0].length; c++){
-      // if(board[r][c] == 1){
-        //ans += "Q ";
-    //  }
-    //  if(board[r][c] == 0){ans += "_ ";}
-    ans += board[r][c];
-    ans += " ";
+       if(board[r][c] == -1){
+        ans += "Q ";
+      }
+      else{ans += "_ ";}
+
      }
      ans += '\n';
    }
