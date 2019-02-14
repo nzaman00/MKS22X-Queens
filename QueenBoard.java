@@ -84,6 +84,12 @@ public class QueenBoard{
   }
   public boolean solveH(int col, int numQueens){
     for(int r = 0; r < board.length; r++){
+      if (board.addQueen(r,col)){
+        if(col < board[0].length){
+          solveH(col++, numQueens++)
+        }
+        return true;
+      }
 
     }
     return false;
