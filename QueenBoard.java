@@ -76,24 +76,55 @@ public class QueenBoard{
     return false;
   }
   public boolean solve(){
-    int numQueens = 0;
-    if(numQueens == board.length -1){
-      return true;
+        for (int[] row: board) {
+            for (int value : row ) {
+                if (value != 0){
+                    throw new IllegalStateException();
+                }
+            }
+        }
+        return solveH(0,0,false);
     }
-    return false;
-  }
-  public boolean solveH(int col, int numQueens){
-    for(int r = 0; r < board.length; r++){
-      if (board.addQueen(r,col)){
-        if(col < board[0].length){
-          solveH(col++, numQueens++)
+    public boolean solveH(int row, int col, boolean remove){
+        if (remove){
+            removeQueen(row, col-1);
+        }
+        if (row < board.length){
+            if (col < board.length){
+                if (addQueen(row,col)){
+                    return solveHelp(row + 1, 0, false) || solveHelp(row, col + 1, true);
+                }
+                return solveHelp(row, col + 1, false);
+            }
+            return false;
         }
         return true;
-      }
-
     }
-    return false;
-  }
+    public int countSolutions(){
+        for (int[] row: board) {
+            for (int value : row ) {
+                if (value != 0){
+                    throw new IllegalStateException();
+                }
+            }
+        }
+        return countH(0,0,false);
+    }
+    public int countH(int row, int col, boolean remove){
+        if (remove){
+            removeQueen(row, col-1);
+        }
+        if (row < board.length){
+            if (col < board.length){
+                if (addQueen(row,col)){
+                    return countHelp(row + 1, 0, false) + countHelp(row, col + 1, true);
+                }
+                return countHelp(row, col + 1, false);
+            }
+            return 0;
+        }
+        return 1;
+    }
   public static void main(String[] args) {
     QueenBoard test = new QueenBoard(4);
      System.out.println(test.addQueen(1, 1));
