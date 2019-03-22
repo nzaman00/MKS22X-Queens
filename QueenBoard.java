@@ -66,15 +66,6 @@ public class QueenBoard{
    return ans;
   }
 
-
-  public boolean check(){
-    for(int r = 0; r < board.length; r++){
-      for(int c =0; c < board[0].length; c++){
-        //if(board[r])
-      }
-    }
-    return false;
-  }
   public boolean solve(){
         for (int[] row: board) {
             for (int value : row ) {
@@ -83,9 +74,9 @@ public class QueenBoard{
                 }
             }
         }
-        return solveH(0,0,false);
+        return solveHelp(0,0,false);
     }
-    public boolean solveH(int row, int col, boolean remove){
+    public boolean solveHelp(int row, int col, boolean remove){
         if (remove){
             removeQueen(row, col-1);
         }
@@ -108,9 +99,9 @@ public class QueenBoard{
                 }
             }
         }
-        return countH(0,0,false);
+        return countHelp(0,0,false);
     }
-    public int countH(int row, int col, boolean remove){
+    public int countHelp(int row, int col, boolean remove){
         if (remove){
             removeQueen(row, col-1);
         }
@@ -125,16 +116,4 @@ public class QueenBoard{
         }
         return 1;
     }
-  public static void main(String[] args) {
-    QueenBoard test = new QueenBoard(4);
-     System.out.println(test.addQueen(1, 1));
-
-     System.out.println(test.toString());
-     System.out.println(test.addQueen(3, 0));
-     System.out.println(test.toString());
-     test.removeQueen(1, 1);
-     System.out.println(test.toString());
-
-
-   }
 }
